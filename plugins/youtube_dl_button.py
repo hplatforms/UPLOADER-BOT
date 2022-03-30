@@ -130,6 +130,15 @@ async def youtube_dl_call_back(bot, update):
     if Config.HTTP_PROXY != "":
         command_to_exec.append("--proxy")
         command_to_exec.append(Config.HTTP_PROXY)
+    if "hotstar" in yt_dlp_url:
+        command_to_exec.append("--geo-bypass-country")
+        command_to_exec.append("IN")
+    if "moly.cloud" in yt_dlp_url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://vidmoly.to/")
+    if "closeload" in yt_dlp_url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://closeload.com/")
     if youtube_dl_username is not None:
         command_to_exec.append("--username")
         command_to_exec.append(youtube_dl_username)
